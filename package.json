@@ -1,0 +1,24 @@
+{
+  "name": "recuperatorio-trabajo-integrador-relacional-backend-diplomatura-untref",
+  "version": "1.0.0",
+  "description": "En este proyecto, desarrollarás una plataforma de streaming usando Node.js y MySQL. La aplicación permitirá realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre una base de datos relacional, utilizando el archivo trailerflix.json como referencia para diseñar el modelo de datos.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceswie-bit/Recuperatorio-Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ceswie-bit/Recuperatorio-Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF/issues"
+  },
+  "homepage": "https://github.com/ceswie-bit/Recuperatorio-Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3"
+  }
+}

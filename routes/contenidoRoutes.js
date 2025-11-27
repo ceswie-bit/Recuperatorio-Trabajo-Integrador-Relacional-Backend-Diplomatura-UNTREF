@@ -1,27 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../conexion/database');
+const contenidoController = require('../controllers/contenidoController'); // Importamos al Controlador
 
-// Routes for CRUD
-router.get('/', (req, res) => {
-    // Get all content
-});
+// Listar Todos los contenidos
+router.get('/', contenidoController.list);
 
-router.get('/:id', (req, res) => {
-    // Get content by ID
-});
+// 2. Obtener por ID
+router.get('/:id', contenidoController.getById);
 
-router.post('/', (req, res) => {
-    // Add new content
-});
-
-router.put('/:id', (req, res) => {
-    // Update content by ID
-});
-
-router.delete('/:id', (req, res) => {
-    // Delete content by ID
-});
+// --- RUTAS PENDIENTES (Las descomentaremos luego) ---
+// router.get('/:id', (req, res) => { ... });
+// router.post('/', (req, res) => { ... });
+// router.put('/:id', (req, res) => { ... });
+// router.delete('/:id', (req, res) => { ... });
 
 module.exports = router;
-    
