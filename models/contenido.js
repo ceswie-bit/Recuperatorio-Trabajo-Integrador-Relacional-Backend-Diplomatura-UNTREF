@@ -1,11 +1,10 @@
 const db = require('../conexion/database'); // 1. Traemos la conexión a la base de datos
 
 const Contenido = {
-    // Función: Listar todos los contenidos
-    // Función listar con Filtros Inteligentes
+    // Función listar con Filtros
     listar: (filtros, callback) => {
         // Base de la consulta: Unimos contenido con categorías y géneros
-        // Usamos 'DISTINCT' o 'GROUP BY' porque los géneros pueden duplicar filas
+        // Usamos 'DISTINCT' porque los géneros pueden duplicar filas
         let sql = `
             SELECT DISTINCT c.*, cat.nombre AS nombre_categoria 
             FROM contenido c
@@ -97,9 +96,7 @@ const Contenido = {
         });
     }
 
-   
-
-    
+       
 };
 
 module.exports = Contenido; // Exportamos el modelo para usarlo en otros lados    
