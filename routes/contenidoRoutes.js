@@ -160,6 +160,7 @@ router.post('/', contenidoController.create);
  *       '404':
  *         description: Contenido no encontrado
  */
+router.get('/:id', contenidoController.getById);
 
 /**
  * @swagger
@@ -185,6 +186,7 @@ router.post('/', contenidoController.create);
  *       '404':
  *         description: Contenido no encontrado
  */
+router.put('/:id', contenidoController.update);
 
 /**
  * @swagger
@@ -204,6 +206,7 @@ router.post('/', contenidoController.create);
  *       '404':
  *         description: Contenido no encontrado
  */
+router.delete('/:id', contenidoController.delete);
 
 /**
  * @swagger
@@ -217,9 +220,17 @@ router.post('/', contenidoController.create);
  *         required: true
  *         schema:
  *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Contenido'
  *     responses:
  *       '200':
  *         description: Contenido actualizado
+ *       '404':
+ *         description: Contenido no encontrado
  */
 router.patch('/:id', contenidoController.update);
 
