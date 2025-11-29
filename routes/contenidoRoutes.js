@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const contenidoController = require('../controllers/contenidoController'); // Importamos al Controlador
+const contenidoController = require('../controllers/contenidoController');
 
 /**
  * @swagger
@@ -8,19 +8,47 @@ const contenidoController = require('../controllers/contenidoController'); // Im
  *   schemas:
  *     Contenido:
  *       type: object
+ *       required:
+ *         - titulo
+ *         - categoria_id
  *       properties:
  *         id:
  *           type: integer
- *           description: ID autogenerado
+ *           description: ID autogenerado de la base de datos
  *         titulo:
  *           type: string
  *           description: Título de la película o serie
+ *         poster:
+ *           type: string
+ *           description: URL de la imagen del poster
+ *         resumen:
+ *           type: string
+ *           description: Sinopsis del contenido
+ *         temporadas:
+ *           type: integer
+ *           nullable: true
+ *           description: Número de temporadas (null si es película)
+ *         duracion:
+ *           type: integer
+ *           nullable: true
+ *           description: Duración en minutos (null si es serie)
+ *         trailer:
+ *           type: string
+ *           description: URL del video de YouTube
  *         categoria_id:
  *           type: integer
  *           description: 1 para Serie, 2 para Película
+ *       example:
+ *         titulo: "Gladiador"
+ *         poster: "/posters/gladiador.jpg"
+ *         resumen: "Un general romano es traicionado y se convierte en esclavo."
+ *         temporadas: null
+ *         duracion: 155
+ *         trailer: "https://www.youtube.com/watch?v=gladiador"
+ *         categoria_id: 2
  */
 
-// --- 1. RUTAS ESPECÍFICAS ---
+// --- 1. RUTAS ESPECÍFICAS (Van PRIMERO) ---
 
 /**
  * @swagger
@@ -32,8 +60,6 @@ const contenidoController = require('../controllers/contenidoController'); // Im
  *       '200':
  *         description: Lista de categorías
  */
-
-// filtro : categorias
 router.get('/categorias', contenidoController.listCategorias);
 
 /**
@@ -46,8 +72,6 @@ router.get('/categorias', contenidoController.listCategorias);
  *       '200':
  *         description: Lista de géneros
  */
-
-// filtro : generos
 router.get('/generos', contenidoController.listGeneros);
 
 /**
@@ -60,9 +84,8 @@ router.get('/generos', contenidoController.listGeneros);
  *       '200':
  *         description: Lista de actores
  */
-
-// filtro : actores
 router.get('/actores', contenidoController.listActores);
+
 
 // --- 2. RUTAS GENERALES ---
 
@@ -70,7 +93,7 @@ router.get('/actores', contenidoController.listActores);
  * @swagger
  * /contenido:
  *   get:
- *     summary: Obtener todo el catálogo (permite filtrar por titulo, genero, categoria)
+ *     summary: Obtener todo el catálogo
  *     tags: [Contenido]
  *     parameters:
  *       - in: query
@@ -94,9 +117,7 @@ router.get('/actores', contenidoController.listActores);
  *       '404':
  *         description: No se encontraron coincidencias
  */
-
-//funcion listar todo
-router.get('/', contenidoController.list);     // GET /contenido
+router.get('/', contenidoController.list);
 
 /**
  * @swagger
@@ -116,9 +137,8 @@ router.get('/', contenidoController.list);     // GET /contenido
  *       '400':
  *         description: Datos faltantes (título obligatorio)
  */
+router.post('/', contenidoController.create);
 
-//funcion crear nuevo contenido
-router.post('/', contenidoController.create);  // POST /contenido
 
 // --- 3. RUTAS DINÁMICAS (ID) ---
 
@@ -140,9 +160,6 @@ router.post('/', contenidoController.create);  // POST /contenido
  *       '404':
  *         description: Contenido no encontrado
  */
-
-//funcion buscar por id
-router.get('/:id', contenidoController.getById);
 
 /**
  * @swagger
@@ -169,9 +186,6 @@ router.get('/:id', contenidoController.getById);
  *         description: Contenido no encontrado
  */
 
-//funcion actualizar contenido
-router.put('/:id', contenidoController.update);
-
 /**
  * @swagger
  * /contenido/{id}:
@@ -191,9 +205,6 @@ router.put('/:id', contenidoController.update);
  *         description: Contenido no encontrado
  */
 
-//funcion eliminar contenido
-router.delete('/:id', contenidoController.delete);
-
 /**
  * @swagger
  * /contenido/{id}:
@@ -210,8 +221,6 @@ router.delete('/:id', contenidoController.delete);
  *       '200':
  *         description: Contenido actualizado
  */
-
-//funcion actualizar parcialmente contenido
 router.patch('/:id', contenidoController.update);
 
 module.exports = router;
