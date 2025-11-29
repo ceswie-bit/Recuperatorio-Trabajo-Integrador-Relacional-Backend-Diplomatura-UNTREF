@@ -19,6 +19,8 @@
   "homepage": "https://github.com/ceswie-bit/Recuperatorio-Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF#readme",
   "dependencies": {
     "express": "^5.1.0",
-    "mysql2": "^3.15.3"
+    "mysql2": "^3.15.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   }
 }
