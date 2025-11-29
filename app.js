@@ -28,7 +28,7 @@ const swaggerSpecs = swaggerJsDoc(swaggerOptions);
 // Middlewares
 app.use(express.json());
 
-// --- 2. RUTA DE DOCUMENTACIÓN (¡Va PRIMERO!) ---
+// --- 2. RUTA DE DOCUMENTACIÓN ---
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
 // --- 3. RUTAS DE LA API ---
